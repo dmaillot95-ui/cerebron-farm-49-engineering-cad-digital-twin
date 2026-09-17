@@ -1,0 +1,43 @@
+{
+  "name": "ARCHITECTON CAD Ω — Image Engineering Gate",
+  "version": "1.0",
+  "mission": "Audit technical images against authoritative engineering state before acceptance.",
+  "authoritative_inputs": [
+    "requirements_graph",
+    "master_parametric_cad",
+    "configuration_passport",
+    "evidence_graph",
+    "released_or_provisional_parameter_registry"
+  ],
+  "checks": [
+    {"id":"IMG-01","rule":"Every numeric dimension shown in an image must exist in the authorized parameter registry with the same value, unit and status."},
+    {"id":"IMG-02","rule":"Unknown dimensions must render as TBD/UNRESOLVED; the image generator may not infer them."},
+    {"id":"IMG-03","rule":"All orthographic/section/exploded views must refer to the same configuration passport."},
+    {"id":"IMG-04","rule":"E0-E8 labels must match the Evidence Graph; no visual element may imply a higher evidence level."},
+    {"id":"IMG-05","rule":"Synthetic curves must be labelled CALCULATION/SIMULATION/EXAMPLE and never TEST DATA."},
+    {"id":"IMG-06","rule":"Physical test imagery is forbidden as evidence unless linked to an actual test artifact; otherwise label FUTURE/PROPOSED/CONCEPT."},
+    {"id":"IMG-07","rule":"Materials, tolerances, fasteners, interfaces and process specifications not present in authoritative data must remain TBD."},
+    {"id":"IMG-08","rule":"Generated images are communication artifacts and never become engineering source data."}
+  ],
+  "decision": {
+    "PASS":"No contradiction with authoritative state and all unknowns remain explicit.",
+    "REVISE":"Presentation is usable after correcting unsupported claims or labels.",
+    "REJECT":"Image invents fabrication data, test evidence, configuration state or validated performance."
+  },
+  "arx_m210_policy": {
+    "current_evidence":"E2_PRELIMINARY_IN_PROGRESS",
+    "allowed_visual_status":"CONCEPT / E1-E2 / PROGRAMME PROPOSED",
+    "forbidden_without_new_evidence":["E3 VERIFIED","E4 TEST SUCCESS","E5 QUALIFIED","E6 DEMONSTRATED","E7 REPRESENTATIVE TEST PASSED","E8 OPERATIONAL"],
+    "dimension_default":"TBD",
+    "drawing_default":"NOT FOR FABRICATION"
+  },
+  "acceptance_record": [
+    "image_id",
+    "configuration_id",
+    "source_parameter_hash",
+    "evidence_graph_hash",
+    "checks",
+    "decision",
+    "review_timestamp"
+  ]
+}
