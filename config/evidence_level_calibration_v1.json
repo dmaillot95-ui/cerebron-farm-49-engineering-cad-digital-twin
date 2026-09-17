@@ -1,0 +1,43 @@
+{
+  "name": "FARM 49 Evidence-Level Calibration",
+  "version": "1.0",
+  "principle": "CLAIM <= EVIDENCE",
+  "purpose": "Prevent CAD renders, calculations, simulations or generated images from being mislabeled as higher evidence levels.",
+  "levels": {
+    "E0": {"name":"idea","minimum_evidence":["documented concept"]},
+    "E1": {"name":"architecture","minimum_evidence":["requirements","system architecture","interfaces","assumptions"]},
+    "E2": {"name":"calculation","minimum_evidence":["reproducible calculations","parameter provenance","sensitivity/uncertainty","independent audit where applicable"]},
+    "E3": {"name":"verified simulation","minimum_evidence":["executed simulation","solver/version/configuration","mesh/model convergence where applicable","artifact hashes","verification checks"]},
+    "E4": {"name":"bench_or_HIL","minimum_evidence":["physical bench or HIL execution","test configuration","instrumentation record","raw data","calibration/provenance","test report"]},
+    "E5": {"name":"subsystem","minimum_evidence":["physical subsystem","representative integrated test","configuration passport","measured results","inspection/anomaly record"]},
+    "E6": {"name":"demonstrator","minimum_evidence":["integrated demonstrator","executed demonstration","measured evidence","configuration traceability"]},
+    "E7": {"name":"representative_test","minimum_evidence":["representative environment/mission test","defined acceptance criteria","measured results","independent review"]},
+    "E8": {"name":"operational_history","minimum_evidence":["real operational use","configuration-controlled history","field data","failures/maintenance record","repeatable performance evidence"]}
+  },
+  "hard_gates": [
+    "IMAGE != TEST",
+    "RENDER != CAD_VALIDATION",
+    "CAD_MODEL != PHYSICAL_ARTIFACT",
+    "SIMULATION != TEST",
+    "FINITE_TEST != UNIVERSAL_VALIDATION",
+    "TARGET != MEASURED_RESULT",
+    "GENERATED_GRAPH != TEST_DATA",
+    "GENERATED_DATE != TEST_CAMPAIGN",
+    "NO E4+ WITHOUT PHYSICAL_OR_HIL_EVIDENCE",
+    "NO E8 WITHOUT OPERATIONAL_HISTORY"
+  ],
+  "artifact_policy": {
+    "generated_images": "VISUALIZATION_ONLY",
+    "concept_blueprints": "NOT_FOR_FABRICATION_UNLESS_RELEASED_BY_REAL_ENGINEERING_PROCESS",
+    "missing_evidence": "TBD_OR_UNRESOLVED",
+    "synthetic_test_panels": "MUST_BE_LABELLED PROPOSED/EXAMPLE, NEVER SUCCESS/QUALIFIED"
+  },
+  "automatic_downgrade": {
+    "enabled": true,
+    "rule": "Reported level is the highest level for which every minimum-evidence gate is satisfied. Missing evidence downgrades the claim; it is never filled by inference or image generation."
+  },
+  "current_arx_m210_status": {
+    "maximum_claimable_level": "E2",
+    "reason": "Concept architecture and preliminary calculations exist; no verified E3 simulation package, physical/HIL E4 evidence, E5 subsystem test, demonstrator, representative test or operational history has been established in FARM 49."
+  }
+}
