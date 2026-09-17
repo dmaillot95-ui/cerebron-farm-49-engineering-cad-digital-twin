@@ -1,0 +1,22 @@
+{
+  "project": "benchmark_part_001",
+  "status": "MVP_E1",
+  "units": "mm",
+  "purpose": "Deterministic parametric CAD pipeline benchmark",
+  "parameters": {
+    "width": 120.0,
+    "height": 80.0,
+    "thickness": 12.0,
+    "hole_diameter": 10.0,
+    "hole_spacing_x": 80.0,
+    "hole_spacing_y": 40.0,
+    "fillet_radius": 4.0,
+    "chamfer": 1.0
+  },
+  "requirements": {
+    "solid_count": 1,
+    "minimum_volume_mm3": 1.0,
+    "exports": ["STEP", "STL"]
+  },
+  "evidence_note": "MVP geometry benchmark only; successful execution validates the CAD pipeline, not an industrial design."
+}
