@@ -1,0 +1,32 @@
+name: ARCHITECTON CAD MVP-03
+on:
+  push:
+    paths:
+      - 'projects/benchmark_part_001/mvp03_transaction_rollback.py'
+      - '.github/workflows/architecton-cad-mvp03.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  transaction-rollback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned CAD engine
+        run: python -m pip install 'cadquery==2.8.0'
+      - name: Run MVP-03 rollback gate
+        run: python projects/benchmark_part_001/mvp03_transaction_rollback.py
+      - name: Upload MVP-03 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: architecton-mvp03-rollback
+          path: projects/benchmark_part_001/out_mvp03/
+          if-no-files-found: warn
+          retention-days: 30
