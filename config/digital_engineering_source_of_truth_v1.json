@@ -1,0 +1,64 @@
+{
+  "name": "ARCHITECTON CAD Ω — Digital Engineering Source of Truth",
+  "version": "1.0",
+  "mission": "Make the master parametric CAD model and Evidence Graph authoritative; generated images are derived communication artifacts only.",
+  "authority_order": [
+    "requirements_graph",
+    "master_parametric_cad",
+    "configuration_passport",
+    "evidence_graph",
+    "verified_calculation_or_simulation_artifacts",
+    "derived_2d_drawings",
+    "bom_and_interface_views",
+    "dashboard_and_generated_images"
+  ],
+  "rules": [
+    "CLAIM <= EVIDENCE",
+    "IMAGE != CAD_MODEL",
+    "RENDER != DRAWING_RELEASE",
+    "TARGET != VALIDATED",
+    "SIMULATION != TEST",
+    "NO MANUAL DIMENSION INVENTION IN GENERATED IMAGES",
+    "TBD REMAINS TBD UNTIL AN AUTHORITATIVE ENGINEERING ARTIFACT RESOLVES IT",
+    "ALL RELEASED 2D VIEWS MUST DERIVE FROM THE SAME MASTER CAD CONFIGURATION",
+    "EVERY STATUS E0-E8 MUST LINK TO ITS REQUIRED EVIDENCE"
+  ],
+  "change_transaction": [
+    "BEGIN",
+    "PROPOSE_CHANGE",
+    "DEPENDENCY_ANALYSIS",
+    "REBUILD_MASTER_CAD",
+    "RUN_DETERMINISTIC_VALIDATION",
+    "UPDATE_CONFIGURATION_PASSPORT",
+    "UPDATE_EVIDENCE_GRAPH",
+    "REGENERATE_DERIVED_VIEWS",
+    "COMMIT_OR_ROLLBACK"
+  ],
+  "derived_outputs": {
+    "orthographic_views": "derived_from_master_cad",
+    "sections": "derived_from_master_cad",
+    "exploded_views": "derived_from_master_assembly",
+    "dimensions": "authoritative_only_or_TBD",
+    "bom": "derived_from_master_assembly",
+    "interfaces": "derived_from_semantic_interface_graph",
+    "program_dashboard": "derived_from_evidence_graph",
+    "presentation_images": "visualization_only"
+  },
+  "evidence_sync": {
+    "E0_E1": "requirements_and_architecture",
+    "E2": "reproducible_calculation_package",
+    "E3": "verified_executed_simulation_package",
+    "E4": "physical_bench_or_HIL_evidence",
+    "E5": "physical_subsystem_evidence",
+    "E6": "integrated_demonstrator_evidence",
+    "E7": "representative_test_evidence",
+    "E8": "operational_history"
+  },
+  "arx_m210": {
+    "current_status": "E2_PRELIMINARY_IN_PROGRESS",
+    "drawing_status": "CONCEPTUAL_NOT_FOR_FABRICATION",
+    "unresolved_dimensions": "TBD",
+    "forbidden_auto_upgrade": true,
+    "next_gate": "complete auditable E2 package before any E3 claim"
+  }
+}
