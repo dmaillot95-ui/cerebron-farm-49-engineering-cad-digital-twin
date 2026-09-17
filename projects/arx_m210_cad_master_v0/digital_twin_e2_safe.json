@@ -1,0 +1,45 @@
+{
+  "project": "ARX-M210 Omega",
+  "artifact": "DIGITAL_TWIN_E2_SAFE",
+  "status": "CONCEPTUAL_NOT_FOR_FABRICATION",
+  "evidence_level": "E1-E2",
+  "configuration": "M210-SL conceptual baseline",
+  "principles": [
+    "CLAIM <= EVIDENCE",
+    "MODEL != VALIDATED HARDWARE",
+    "SIMULATION != TEST",
+    "TARGET != VERIFIED PERFORMANCE",
+    "NO FABRICATION DIMENSIONS"
+  ],
+  "functional_assembly": [
+    {"id":"A01","name":"engine_envelope","cad_role":"outer keep-in / interface volume","detail":"non-fabrication"},
+    {"id":"A02","name":"combustion_chamber_placeholder","cad_role":"functional volume only","detail":"sensitive internal dimensions unresolved"},
+    {"id":"A03","name":"sea_level_bell_nozzle_placeholder","cad_role":"representative outer volume","detail":"throat/expansion geometry unresolved"},
+    {"id":"A04","name":"oxidizer_turbomachinery_volume","cad_role":"equipment allocation","detail":"internal geometry unresolved"},
+    {"id":"A05","name":"fuel_turbomachinery_volume","cad_role":"equipment allocation","detail":"internal geometry unresolved"},
+    {"id":"A06","name":"ORSC_preburner_functional_block","cad_role":"architecture/topology","detail":"internal geometry unresolved"},
+    {"id":"A07","name":"valve_and_manifold_zones","cad_role":"routing/interface allocation","detail":"flow sizing unresolved"},
+    {"id":"A08","name":"LOX_feed_route_placeholder","cad_role":"connectivity only","detail":"diameter/thickness unresolved"},
+    {"id":"A09","name":"LCH4_feed_route_placeholder","cad_role":"connectivity only","detail":"diameter/thickness unresolved"},
+    {"id":"A10","name":"gimbal_interface","cad_role":"kinematic/interface placeholder","detail":"loads and bearing geometry unresolved"},
+    {"id":"A11","name":"sensor_interface_set","cad_role":"instrumentation placeholders","detail":"chamber pressure, pump pressure, temperature, RPM, vibration, valve position"},
+    {"id":"A12","name":"stage_mount_interface","cad_role":"reference interface only","detail":"bolt pattern/load path unresolved"}
+  ],
+  "evidence_graph": [
+    {"claim":"LOX/LCH4 propellant family","status":"DOSSIER_TARGET"},
+    {"claim":"ORSC derated architecture","status":"DOSSIER_TARGET"},
+    {"claim":"approximately 2.1 MN thrust class","status":"DOSSIER_TARGET"},
+    {"claim":"180 bar chamber pressure","status":"DOSSIER_TARGET_NOT_VALIDATED"},
+    {"claim":"regenerative cooling baseline","status":"DOSSIER_BASELINE"},
+    {"claim":"sea-level bell nozzle for M210-SL","status":"DOSSIER_BASELINE"},
+    {"claim":"fabrication-ready geometry","status":"NOT_CLAIMED"}
+  ],
+  "validation_gates": {
+    "G0_requirements_traceability":"OPEN",
+    "G1_geometry_consistency":"OPEN",
+    "G2_multiphysics_analysis":"OPEN",
+    "G3_component_test_correlation":"OPEN",
+    "G4_integrated_hardware_validation":"OPEN"
+  },
+  "release_rule":"May be used for visualization, interface studies, digital engineering and requirements traceability; must not be represented as a fabrication drawing, qualified engine, or validated propulsion design."
+}
