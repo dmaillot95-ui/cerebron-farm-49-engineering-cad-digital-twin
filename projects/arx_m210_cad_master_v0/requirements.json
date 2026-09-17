@@ -1,0 +1,58 @@
+{
+  "project": "ARX-M210 Omega CAD MASTER V0",
+  "evidence_level": "E1-E2 CONCEPTUAL/TARGET",
+  "source": "DOSSIER 03 — ARCHITECTON Ω — MOTEURS-FUSÉES ET ÉTAGES D’ACCÈS Ω",
+  "configuration": "B1 / M210-SL baseline",
+  "rules": [
+    "CLAIM <= EVIDENCE",
+    "TARGET != VALIDATED",
+    "UNKNOWN dimensions must not be invented as verified values",
+    "CAD geometry remains provisional until physics/model gates close"
+  ],
+  "requirements": {
+    "propellants": {"value": "LOX/LCH4", "status": "TARGET"},
+    "cycle": {"value": "ORSC derated", "status": "TARGET"},
+    "thrust_class_MN": {"value": 2.1, "status": "TARGET", "note": "approximate class"},
+    "chamber_pressure_bar": {"value": 180.0, "status": "TARGET", "data_id": "S03-D-0001"},
+    "mission": {"value": "reusable first stage, medium/heavy", "status": "TARGET"},
+    "cooling": {"value": "regenerative", "status": "BASELINE"},
+    "nozzle": {"value": "bell sea-level", "status": "BASELINE_FOR_M210_SL"},
+    "tvc": {"value": "gimbal with possible differential-thrust support", "status": "PROBABLE_BASELINE"}
+  },
+  "unknowns_required_before_geometry_freeze": [
+    "mixture_ratio_OF",
+    "specific_impulse_SL_s",
+    "specific_impulse_vac_s",
+    "mass_flow_kg_s",
+    "characteristic_velocity_cstar_m_s",
+    "thrust_coefficient_Cf",
+    "nozzle_expansion_ratio",
+    "chamber_diameter_mm",
+    "chamber_length_mm",
+    "throat_diameter_mm",
+    "nozzle_exit_diameter_mm",
+    "nozzle_length_mm",
+    "engine_envelope_mm",
+    "engine_dry_mass_kg",
+    "turbopump_geometry",
+    "turbopump_RPM",
+    "turbopump_power",
+    "materials_and_wall_stack",
+    "cooling_channel_geometry",
+    "mounting_interfaces",
+    "tolerances"
+  ],
+  "next_model_gate": {
+    "name": "ARX-M210 E2 sizing package",
+    "sequence": [
+      "thermochemistry model",
+      "1D cycle model",
+      "nozzle/performance sizing",
+      "mass-flow closure",
+      "thermal preliminary model",
+      "structural preliminary model",
+      "CAD parameter freeze candidate"
+    ],
+    "result_status_until_verified": "CALCULATED/ESTIMATED, never VALIDATED"
+  }
+}
