@@ -1,0 +1,25 @@
+{
+  "project":"rocket_engine_concept_v1",
+  "status":"CONCEPT_E1",
+  "purpose":"CAD and visualization demonstrator; not flight hardware",
+  "units":"mm",
+  "architecture":{
+    "type":"liquid bipropellant rocket engine concept",
+    "cycle":"staged-combustion-inspired conceptual layout",
+    "propellants":"LOX / methane conceptual",
+    "major_subsystems":["thrust_chamber","injector","regenerative_cooling_jacket","nozzle","fuel_turbopump","oxidizer_turbopump","valve_block","feed_lines","gimbal_frame"]
+  },
+  "provisional_geometry":{
+    "overall_height":3100,
+    "max_envelope_diameter":1450,
+    "chamber_outer_diameter":480,
+    "chamber_length":650,
+    "throat_diameter":260,
+    "nozzle_exit_diameter":1250,
+    "nozzle_length":1450,
+    "turbopump_envelope_diameter":360,
+    "feed_line_outer_diameter":110
+  },
+  "evidence_note":"All dimensions are provisional visualization parameters generated for the FARM 49 demonstrator. They are not validated propulsion design values.",
+  "required_views":["external_isometric","longitudinal_cutaway","exploded_assembly","turbopump_detail","injector_detail","cooling_channel_detail"]
+}
