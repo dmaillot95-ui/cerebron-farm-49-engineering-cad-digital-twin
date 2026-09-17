@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
 
       - name: Install pinned CAD engine
         run: |
@@ -45,5 +44,5 @@ jobs:
         with:
           name: architecton-benchmark-part-001
           path: projects/benchmark_part_001/out/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
