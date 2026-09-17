@@ -1,0 +1,30 @@
+name: ARCHITECTON CAD MVP-04
+on:
+  push:
+    paths:
+      - 'projects/benchmark_part_001/mvp04_dependency_graph.py'
+      - '.github/workflows/architecton-cad-mvp04.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dependency-graph:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deterministic CAD engine
+        run: python -m pip install 'cadquery==2.8.0'
+      - name: Run MVP-04 dependency graph gate
+        run: python projects/benchmark_part_001/mvp04_dependency_graph.py
+      - name: Upload MVP-04 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: architecton-mvp04-dependency-graph
+          path: projects/benchmark_part_001/out_mvp04/
+          if-no-files-found: warn
+          retention-days: 30
