@@ -1,0 +1,49 @@
+name: ARCHITECTON CAD MVP
+
+on:
+  push:
+    paths:
+      - 'projects/benchmark_part_001/**'
+      - '.github/workflows/architecton-cad-mvp.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark-part-001:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install pinned CAD engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'cadquery==2.8.0'
+          python - <<'PY'
+          import cadquery as cq
+          print('CadQuery', cq.__version__)
+          PY
+
+      - name: Build benchmark CAD
+        run: python projects/benchmark_part_001/cad_model.py
+
+      - name: Validate and hash artifacts
+        run: python projects/benchmark_part_001/validate.py
+
+      - name: Upload CAD evidence pack
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: architecton-benchmark-part-001
+          path: projects/benchmark_part_001/out/
+          if-no-files-found: error
+          retention-days: 30
