@@ -1,0 +1,14 @@
+{
+  "project": "ARX-M210 Omega CAD MASTER V0",
+  "evidence_level": "E1-E2 CONCEPTUAL/TARGET",
+  "units": "mm",
+  "dimensions": {
+    "overall_length_mm": "TBD",
+    "overall_diameter_mm": "TBD"
+  },
+  "rules": [
+    "TBD values are never converted into invented dimensions",
+    "DXF/SVG output remains PROVISIONAL until engineering gates close",
+    "CLAIM <= EVIDENCE"
+  ]
+}
